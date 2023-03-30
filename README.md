@@ -5,8 +5,3 @@ Dependencies
 - dotenv
 - fastf1
 - tabulate
-
-.env:
-DISCORD_TOKEN=<>
-APP_ID=<>
-PUBLIC_KEY=<>
