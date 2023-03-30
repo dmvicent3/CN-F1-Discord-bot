@@ -1,0 +1,4 @@
+/venv
+/fastf1cache
+/__pycache__
+.env
