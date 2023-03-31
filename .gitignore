@@ -2,3 +2,4 @@
 /fastf1cache
 /__pycache__
 .env
+/.pytest_cache
