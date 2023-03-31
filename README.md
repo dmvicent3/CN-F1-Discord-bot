@@ -7,3 +7,7 @@ Dependencies
 - tabulate
 - pytest
 - asyncio
+
+.env setup:
+DISCORD_TOKEN=<token>
+TEST_CHANNEL=<channel_id>
