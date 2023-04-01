@@ -1,15 +1,17 @@
-name: Discord-bot CI-CD
+# This is a basic workflow to help you get started with Actions
 
-# on:
-#   # Triggers the workflow on push or pull request events but only for the main branch
-#   push:
-#     branches: [main]
-#   pull_request:
-#     branches: [main]
+name: CI
 
-# Allows you to run this workflow manually from the Actions tab on Repo homepage
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
     runs-on: ubuntu-latest   
