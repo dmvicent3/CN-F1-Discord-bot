@@ -1,0 +1,8 @@
+discord.py
+python-dotenv
+fastf1
+tabulate
+asyncio
+pytest
+black
+lint

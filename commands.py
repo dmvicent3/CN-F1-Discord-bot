@@ -1,4 +1,4 @@
-import fastf1
+#import fastf1
 import requests
 from tabulate import tabulate
 
@@ -7,7 +7,7 @@ from tabulate import tabulate
 
 async def get_drivers_standings(message):
     url = "https://ergast.com/api/f1/current/driverStandings.json"
-    response = requests.get(url)
+    response = requests.get(url, timeout=5)
     data = response.json()
     drivers_standings = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings']
     
