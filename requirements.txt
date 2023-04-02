@@ -2,7 +2,7 @@ discord.py
 python-dotenv
 fastf1
 tabulate
-asyncio
+pytest-asyncio
 pytest
 black
 lint
