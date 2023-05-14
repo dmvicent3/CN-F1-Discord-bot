@@ -1,6 +1,5 @@
 discord.py
 python-dotenv
-fastf1
 tabulate
 pytest-asyncio
 pytest
