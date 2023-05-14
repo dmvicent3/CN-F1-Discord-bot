@@ -58,7 +58,7 @@ async def test_constructors_command():
     
     await asyncio.sleep(2) #WAIT FOR API COOLDOWN
     #SEND !constructors TO TEST CHANNEL
-    message = "!constructors"
+    message = "!constructors 2010"
     await test_channel.send(message)
     await asyncio.sleep(2) #WAIT FOR THE API TO RESPOND
     
