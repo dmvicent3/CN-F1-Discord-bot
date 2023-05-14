@@ -3,8 +3,8 @@ from tabulate import tabulate
 
 #API: http://ergast.com/mrd/
 
-async def get_constructors_standings(message, args=[]):
-    if len(args) == 0:
+async def get_constructors_standings(message, args=None):
+    if args == None:
         year = "current"
     else:
         if len(args) > 0:
@@ -15,7 +15,7 @@ async def get_constructors_standings(message, args=[]):
     data = response.json()
     try:
         constructors_standings = data['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings']
-    except Exception:
+    except KeyError:
         await message.channel.send("Invalid year")
         return
     
@@ -33,8 +33,8 @@ async def get_constructors_standings(message, args=[]):
     await message.channel.send(f'{table_str}')
 
 
-async def get_drivers_standings(message, args=[]):
-    if len(args) == 0:
+async def get_drivers_standings(message, args=None):
+    if args == None:
         year = "current"
     else:
         if len(args) > 0:
@@ -45,7 +45,7 @@ async def get_drivers_standings(message, args=[]):
     data = response.json()
     try:
         drivers_standings = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings']
-    except Exception:
+    except KeyError:
         await message.channel.send("Invalid year")
         return
     
@@ -64,7 +64,7 @@ async def get_drivers_standings(message, args=[]):
     await message.channel.send(f'{table_str}')
 
 
-async def get_driver_profile(message, args=[]):
+async def get_driver_profile(message, args=None):
     if len(args) <= 1:
         await message.channel.send("Please specify the driver's first name and last name")
         return
@@ -104,8 +104,8 @@ async def get_driver_profile(message, args=[]):
     await message.channel.send(f'{table_str}')
     
     
-async def get_schedule(message, args=[]):
-    if len(args) == 0:
+async def get_schedule(message, args=None):
+    if args == None:
         year = "current"
     else:
         if len(args) > 0:
@@ -116,7 +116,7 @@ async def get_schedule(message, args=[]):
     data = response.json()
     try:
         schedule = data['MRData']['RaceTable']['Races']
-    except Exception:
+    except KeyError:
         await message.channel.send("Invalid year")
         return
     
@@ -148,8 +148,8 @@ async def get_next_grandprix(message):
     await message.channel.send(f'The next grandprix is {next_grandprix_name} on {next_grandprix_date} at {next_grandprix_time}')
     
     
-async def get_circuits(message, args=[]):
-    if len(args) == 0:
+async def get_circuits(message, args=None):
+    if args == None:
         year = "current"
     else:
         if len(args) > 0:
@@ -160,7 +160,7 @@ async def get_circuits(message, args=[]):
     data = response.json()
     try:
         circuits = data['MRData']['CircuitTable']['Circuits']
-    except Exception:
+    except KeyError:
         await message.channel.send("Invalid year")
         return
     
@@ -177,7 +177,7 @@ async def get_circuits(message, args=[]):
     await message.channel.send(f'{"```"+table_str+"```"}')
     
     
-async def get_circuit_info(message, args=[] ):
+async def get_circuit_info(message, args=None ):
     if len(args) < 1:
         await message.channel.send("Please enter a circuit name")
         return
@@ -186,7 +186,7 @@ async def get_circuit_info(message, args=[] ):
     for name in args:
         circuit_name = name if circuit_name == "" else circuit_name + " " + name
         
-    url = f"https://ergast.com/api/f1/circuits.json?limit=100"
+    url = "https://ergast.com/api/f1/circuits.json?limit=100"
     response = requests.get(url, timeout=5)
     data = response.json()
     
@@ -284,8 +284,8 @@ async def get_last_qual(message):
     await message.channel.send(f'{"```" + race_name + new_line + table_str+"```"}')
 
 
-async def get_race_results(message, args=[]):
-    if len(args) == 0:
+async def get_race_results(message, args=None):
+    if args == 0:
         await message.channel.send("Please specify a year(optinal) and the race number, you can check the race number on !schedule, for example !race 2 or !race 2019 6")
         return
     else:
@@ -301,7 +301,7 @@ async def get_race_results(message, args=[]):
     data = response.json()
     try:
         race = data['MRData']['RaceTable']['Races'][0]
-    except Exception:
+    except KeyError:
         await message.channel.send("Invalid race")
         return
     
@@ -332,8 +332,8 @@ async def get_race_results(message, args=[]):
     await message.channel.send(f'{"```" + race_name + new_line + table_str+"```"}')
     
     
-async def get_qual_results(message, args=[]):
-    if len(args) == 0:
+async def get_qual_results(message, args=None):
+    if args == None:
         await message.channel.send("Please specify a year(optinal) and the race number, you can check the race number on !schedule, for example !race 2 or !race 2019 6")
         return
     else:
@@ -349,7 +349,7 @@ async def get_qual_results(message, args=[]):
     data = response.json()
     try:
         race = data['MRData']['RaceTable']['Races'][0]
-    except Exception:
+    except KeyError:
         await message.channel.send("Invalid race")
         return
     
@@ -383,9 +383,9 @@ async def get_qual_results(message, args=[]):
     await message.channel.send(f'{"```" + race_name + new_line + table_str+"```"}')
     
     
-async def show_help(message, args=[]):
+async def show_help(message, args=None):
     #Sends a message with a table of the available commands and their description
-    if len(args) == 0:
+    if args == None:
         table_data = []
         for command in commands:
             table_data.append([command, commands[command]['description']])
