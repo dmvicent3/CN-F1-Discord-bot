@@ -11,7 +11,7 @@ load_dotenv()
 #SETUP THE CLIENT AND THE EVENT LOOP
 async def client():
     
-    client = MyClient(os.environ.get("DISCORD_TOKEN"))
+    client = MyClient(os.environ.get("DISCORD_TOKEN_TESTS"))
    
     loop = asyncio.get_event_loop()
     task = loop.create_task(client.run_bot_test())
