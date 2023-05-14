@@ -16,5 +16,5 @@ RUN python3 -m pytest -vv test_app.py
 #LINTING
 RUN python3 -m pylint app.py --disable=R,C
 RUN	python3 -m pylint commands.py --disable=R,C
-
+RUN make up
 EXPOSE 8443
