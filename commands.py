@@ -17,6 +17,7 @@ async def get_constructors_standings(message, args=[]):
         constructors_standings = data['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings']
     except Exception:
         await message.channel.send("Invalid year")
+        return
     
     table_data = []
     for constructor in constructors_standings:
