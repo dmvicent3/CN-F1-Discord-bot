@@ -276,4 +276,3 @@ async def test_qual_command():
     response = [message async for message in test_channel.history(limit=1)]
     last_message = response[0].content
     assert("Q1" in last_message)
-    await clt.close()
