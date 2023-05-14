@@ -22,8 +22,9 @@ class MyClient(discord.Client):
             if command in commands:
                 command_info = commands[command]
                 command_func = command_info['function']
-                await command_func(message, args) if args else await command_func(message)
-
+                res = await command_func(message, args) if args else await command_func(message)
+                print(res)
+                
     def run_bot(self):
         self.run(self.token)
         
