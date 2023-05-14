@@ -235,7 +235,6 @@ async def get_last_results(message):
         name = result['Driver']['givenName'] + " " + result['Driver']['familyName']
         constructor = result['Constructor']['name']
         laps = result['laps']
-        grid = result['grid']
         try:
             time = result['Time']['time']
         except KeyError:
@@ -318,7 +317,6 @@ async def get_race_results(message, args=None):
         name = result['Driver']['givenName'] + " " + result['Driver']['familyName']
         constructor = result['Constructor']['name']
         laps = result['laps']
-        grid = result['grid']
         try:
             time = result['Time']['time']
         except KeyError:
