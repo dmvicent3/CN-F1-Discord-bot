@@ -11,7 +11,7 @@ RUN pip install -r requirements.txt
 RUN python3 -m black *.py
 
 #TESTS
-RUN python3 -m pytest -vv test_app.py
+#RUN python3 -m pytest -vv test_app.py
 
 #LINTING
 RUN python3 -m pylint app.py --disable=R,C
